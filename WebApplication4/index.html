@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <!--<link href="vendor/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <style>
+        .headerPage {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+
+            <div class="list-group list-group-flush ">
+                <a href="#" data-id="showPatients" class="list-group-item list-group-item-action bg-light navigation">Patients</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Users</a>
+
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <br />
+                <div class="container" id="patients">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <h1>Patients</h1>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button type="button"  data-id="btnAdd" class="btn btn-primary btn-lg float-right navigation">Add</button>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <table class="table table-bordered" id="patientsTable">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>DOB</th>
+                            <th>Active</th>
+                            <th>Creation</th>
+                            <th></th>
+                        </tr>
+
+
+                    </table>
+                </div>
+                <div class="container" id="patientEdit">
+                    <h1>Patients: (New)</h1>
+                    <br />
+                    <form>
+                        <div class="row">
+                            <div class="col-md-2"><label>First Name:</label></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="fname"  required/></div>
+                            <div class="col-md-2"><label>Email Name:</label></div>
+                            <div class="col-md-3 "><input type="email" id="email" class="form-control" required/></div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2"><label>Middle Name:</label></div>
+                            <div class="col-md-3"><input id="mname" type="text" class="form-control" /></div>
+                            <div class="col-md-2"><label>Date Of Birth:</label></div>
+                            
+                            <div class="col-md-3"  required>  
+                               <input type="date" id="DOB" class="form-control">  
+                            </div>
+
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2"><label>Last Name:</label></div>
+                            <div class="col-md-3"><input type="text" id="lname" class="form-control" required/></div>
+                            <div class="col-md-2"><label>Last check:</label></div>
+                            <div class="col-md-3"> 
+                               <input type='date'  id="lastCheck" class="form-control" />   
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2"><label>Status:</label></div>
+                            <div class="col-md-3">
+                                <select class="browser-default custom-select" id="status" required>
+                                    <option value="0">Draft</option>
+                                    <option value="1">Saved</option>
+                                    <option value="2">Deleted</option>
+                                    <option value="3">Canceled</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3"><label>Gender:</label></div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" name="gender" value="2" id="gender" required>
+                                <label class="form-check-label" for="gender">Femal</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" name="gender" value="1" id="gender">
+                                <label class="form-check-label" for="gender">Male</label>
+                            </div>
+                        </div>
+
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3"><label>Active:</label></div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="chkActive" required>
+                                <label class="custom-control-label" for="chkActive">Active</label>
+                            </div>
+
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-md-1 offset-1">
+                                <button type="submit"  class="btn btn-primary btn-group-lg">save</button>
+                            </div>
+                            <div class="col-md-2">
+                                <button data-id="btnCancel" class="btn btn-danger btn-group-lg navigation">Cancle</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="container" id="users">
+
+                </div>
+                <div class="container" id="userEdit">
+
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+
+</body>
+</html>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/bootstrap/js/moment.js"></script>
+<script src="vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
+  <script src="vendor/bootstrap/js/Patients.js"></script>
+<!-- Menu Toggle Script -->
+<script>
+
+    $(document).ready(function () {
+     
+        $("#patients,#patientEdit,#users,#userEdit").css("display", "none")
+        renderTemplete();
+       
+    });
+
+    $(".navigation").click(function () {
+      
+        var btnDataId = $(this).attr('data-id');
+        switch (btnDataId) {
+            case "btnAdd":
+                $("#patients").css("display", "none")
+                $("#patientEdit").css("display", "block")
+                break;
+            case "showPatients":
+                $("#patients").css("display", "block")
+                $("#patientEdit").css("display", "none")
+                break;
+            case "btnCancel":
+                $('form').trigger("reset");
+                break;
+
+
+        } 
+    })
+
+
+    function myFunction(elem) { 
+        debugger
+        var btnEditDataid = $(elem).attr('data-id');
+        var patientdata = patientsData.find(x => x.ID == btnEditDataid);
+        $("#fname").val(patientdata.fname);
+        $("#mname").val(patientdata.mname);
+        $("#lname").val(patientdata.lname);
+        $("#DOB").val(getFormattedDate(patientdata.DOB)); 
+        $('input:radio[name=gender][value=' + patientdata.gender+']').attr('checked', true);
+        $("#email").val(patientdata.email);
+        $("#lastCheck").text(getFormattedDate(patientdata.lastCheck));
+        $("#status").val(patientdata.status);
+        $("#chkActive").attr('checked', patientdata.Active);
+        $("#patients").css("display", "none")
+        $("#patientEdit").css("display", "block")
+    }
+
+
+    $("form").submit(function (e) {
+       debugger
+        var id = (patientsData[patientsData.length - 1].ID) + 1;
+        var firtname = $("#fname").val();
+        var midName = $("#mname").val();
+        var lastName = $("#lname").val();
+        var bdate = $("#DOB").val();
+        var gender = $("#gender").val();
+        var email = $("#email").val();
+        var lastCheck = $("#lastCheck").val();
+        var status = $("#status").val();
+        var Active = $("#chkActive").val();
+        var patient = {
+            ID: id,
+            fname: firtname,
+            mname: midName,
+            lname: lastName,
+            DOB: new Date(bdate),
+            gender: gender,
+            email: email,
+            lastCheck: new Date(lastCheck),
+            status: status,
+            Active: Active,
+            creationDate: new Date(lastCheck),
+            CreatedBy: 1
+        }
+        patientsData.push(patient);
+
+        if (patient.gender == 1) {
+            genderString = "male"
+        }
+        else {
+            genderString = "female"
+        }
+        $("#patientsTable")
+            .append(`<tr>
+                <td>`+ patient.ID + `</td>
+                <td> `+ patient.fname + " " + patient.mname + " " + patient.lname + `</td>
+                <td>`+ patient.email + ` </td>
+                <td>`+ genderString + `</td>
+                <td>`+ patient.DOB + ` </td>
+                <td>`+ patient.Active + ` </td>
+                <td>`+ patient.creationDate + ` </td>
+                <td> <button type="button" onclick="myFunction(this)" data-id="` + patient.ID + `" class="btn btn-primary btn-sm navigation">Edit</button></td>
+                <tr>`)
+        $("#patients").css("display", "block")
+        $("#patientEdit").css("display", "none")
+
+
+    });
+
+
+    function renderTemplete() {
+        var i = 0;
+        for (i; i < patientsData.length; i++) {
+            var data = patientsData[i];
+            var genderString;
+            if (data.gender == 1) {
+                genderString = "male"
+            }
+            else {
+                genderString = "female"
+            }
+            $("#patientsTable")
+                .append(`<tr>
+                <td>`+ data.ID + `</td>
+                <td> `+ data.fname + " " + data.mname + " " + data.lname + `</td>
+                <td>`+ data.email + ` </td>
+                <td>`+ genderString + `</td>
+                <td>`+ data.DOB + ` </td>
+                <td>`+ data.Active + ` </td>
+                <td>`+ data.creationDate + ` </td>
+                <td> <button type="button" onclick="myFunction(this)" data-id="` + data.ID + `" class="btn btn-primary btn-sm navigation">Edit</button></td>
+                <tr>`)
+        }
+    }
+
+    function getFormattedDate(date) {
+        var year = date.getFullYear();
+
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+
+        return month + '/' + day + '/' + year;
+    }
+
+  
+</script>

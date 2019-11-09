@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <!--  <img src="Images/card.jpg" />-->
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .cardPlayer1 {
+            position: relative;
+            float: left;
+            width: 350px;
+            height: 500px;
+            text-align: center;
+        }
+
+        .cardPlayer2 {
+            position: relative;
+            float: right;
+            width: 350px;
+            height: 500px;
+            text-align: center;
+        }
+
+        #grand {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%;
+            padding-top : 200px
+           
+        }
+
+        .palyer1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 75%;
+            height: 350px;
+            font-size: 26px;
+            color: rgb(0, 0, 0);
+            border: 1px dashed black;
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+        }
+
+
+        .palyer2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 75%;
+            height: 350px;
+            font-size: 26px;
+            color: rgb(0, 0, 0);
+            border: 1px dashed black;
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+        }
+
+
+
+        #play1, #play2 {
+            position: absolute;
+            bottom: 0;
+        }
+
+        #result {
+            position: absolute;
+            bottom: 0px;
+            right: 25%;
+            left: 46%;
+            top:10%;
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+        <div id="player1CurrentCard" class="cardPlayer1">
+            <img class="palyer1" id="palyer1" src="Images/card.jpg"/>
+
+            <button id="play1">Play</button>
+        </div>
+        <div id="player2CurrentCard" class="cardPlayer2">
+            <img class="palyer2" id="palyer2" src="Images/card.jpg"/> 
+
+            <button id="play2">Play</button>
+
+        </div>
+        <div id="result"></div>
+        <img id="grand" src="Images/card.jpg"/> 
+
+
+
+    </div>
+</body>
+</html>
+<script>
+    var deck =[];
+    var shuffledDeck= [];
+    var player1 = [];
+    var player2 = [];
+    var grandArray = [];
+    var popvaluefromplayer1;
+    var popvaluefromplayer2;
+    var result = document.getElementById("result");
+    var grand = document.getElementById("grand");
+    var playerelement1 = document.getElementById("palyer1");
+    var playerelement2 = document.getElementById("palyer2");
+    var types = ["spades", "diamonds", "clubs", "hearts"];
+    var values = [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2,1];
+    function cardEngine() {
+        this.buildDeck = function () {
+            for (var suit = 0; suit < types.length; suit++) {
+                for (var card = 0; card < values.length; card++) {
+                    deck.push({ value: values[card], type: types[suit] } );
+                }
+            }
+        }
+
+
+        this.shuffle = function () {
+
+            while ( deck.length) {
+                var index = Math.floor(Math.random() * deck.length);
+                shuffledDeck.push(deck.splice(index, 1)[0]);
+            }
+
+        }
+
+        this.deal = function () {
+
+            for (var i = 0; i < shuffledDeck.length / 2; i++) {
+                player1.push(shuffledDeck[i]);
+                player2.push(shuffledDeck[shuffledDeck.length - i - 1]);
+            }
+
+        }
+
+        this.draw = function () {
+
+
+            //playerelement1.innerHTML = "";
+            //playerelement2.innerHTML = "";
+            var i = 0;
+            for (i; i < player1.length; i++) {
+                var card = document.createElement("div");
+                var value = document.createElement("div");
+                var suit = document.createElement("div");
+                card.className = "card";
+                value.className = "value";
+                suit.className = "suit " + player1[i].Suit;
+
+                value.innerHTML = player1[i].Value;
+                card.appendChild(value);
+                card.appendChild(suit);
+                //var playerelement1 = document.getElementsByClassName("palyer1");
+                //playerelement1.appendChild(card);
+            }
+            var j = 0;
+
+            for (j; j < player2.length; i++) {
+                var card = document.createElement("div");
+                var value = document.createElement("div");
+                var suit = document.createElement("div");
+                card.className = "card";
+                value.className = "value";
+                suit.className = "suit " + player2[i].Suit;
+
+                value.innerHTML = player2[i].Value;
+                card.appendChild(value);
+                card.appendChild(suit);
+
+                //playerelement2.appendChild(card);
+            }
+
+
+        }
+
+
+    }
+
+
+    play1.onclick = function () {
+        debugger;
+        var grandvalue ;
+
+        popvaluefromplayer1 = player1.pop();
+        playerelement1.src ="Images/" + popvaluefromplayer1.value + popvaluefromplayer1.type +".png";
+        if (grandArray.length == 0) {
+
+
+            grandArray.push(popvaluefromplayer1);
+            grand.src = "Images/" + grandArray[grandArray.length - 1].value + grandArray[grandArray.length - 1].type + ".png" ;
+        }
+        else {
+            grandvalue = grandArray[grandArray.length - 1];
+            if ((popvaluefromplayer1.value == grandvalue.value)) {
+
+                var i = 0;
+                for (i; i < grandArray.length; i++) {
+                    player1.push(grandArray[i])
+                }
+                grandArray = [];
+                result.innerHTML = "player2 is winner"
+                play1.disabled = true;
+                play2.disabled = true;
+            }
+            else {
+
+                grandArray.push(popvaluefromplayer1);
+                grand.src = "Images/" + grandArray[grandArray.length - 1].value + grandArray[grandArray.length - 1].type + ".png";
+
+            }
+        }
+
+
+
+
+    }
+
+
+    play2.onclick = function () {
+        popvaluefromplayer2 = player2.pop();
+        playerelement2.src = "Images/" + popvaluefromplayer2.value + popvaluefromplayer2.type + ".png";
+        var grandvalue ;
+        if (grandArray.length == 0) {
+
+            grandArray.push(popvaluefromplayer2);
+            grand.src = "Images/" + grandArray[grandArray.length - 1].value + grandArray[grandArray.length - 1].type + ".png";
+
+        } else {
+            grandvalue = grandArray[grandArray.length - 1];
+            if ((popvaluefromplayer2.value == grandvalue.value)) {
+
+                var i = 0;
+                for (i; i < grandArray.length; i++) {
+                    player2.push(grand[i])
+                }
+                grandArray = [];
+                result.innerHTML = "player1 is winner"
+                play1.disabled = true;
+                play2.disabled = true;
+            }
+            else {
+
+                grandArray.push(popvaluefromplayer2);
+                grand.src = "Images/" + grandArray[grandArray.length - 1].value + grandArray[grandArray.length - 1].type + ".png";
+
+
+            }
+        }
+
+
+
+
+
+    }
+
+    var cardengine = new cardEngine();
+    cardengine.buildDeck();
+    cardengine.shuffle();
+    cardengine.deal();
+
+
+
+</script>
