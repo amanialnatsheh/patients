@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function myFunction(elem) { 
+        debugger
+        var btnEditDataid = $(elem).attr('data-id');
+        var patientdata = patientsData.find(x => x.ID == btnEditDataid);
+        $("#fname").val(patientdata.fname);
+        $("#mname").val(patientdata.mname);
+        $("#lname").val(patientdata.lname);
+        $("#DOB").val(getFormattedDate(patientdata.DOB)); 
+        $('input:radio[name=gender][value=' + patientdata.gender+']').attr('checked', true);
+        $("#email").val(patientdata.email);
+        $("#lastCheck").text(getFormattedDate(patientdata.lastCheck));
+        $("#status").val(patientdata.status);
+        $("#chkActive").attr('checked', patientdata.Active);
+        $("#patients").css("display", "none")
+        $("#patientEdit").css("display", "block")
+    }
+
+
+    $("form").submit(function (e) {
+        debugger
+        var id = (patientsData[patientsData.length - 1].ID) + 1;
+        var firtname = $("#fname").val();
+        var midName = $("#mname").val();
+        var lastName = $("#lname").val();
+        var bdate = $("#DOB").val();
+        var gender = $("#gender").val();
+        var email = $("#email").val();
+        var lastCheck = $("#lastCheck").val();
+        var status = $("#status").val();
+        var Active = $("#chkActive").val();
+        var patient = {
+            ID: id,
+            fname: firtname,
+            mname: midName,
+            lname: lastName,
+            DOB: new Date(bdate),
+            gender: gender,
+            email: email,
+            lastCheck: new Date(lastCheck),
+            status: status,
+            Active: Active,
+            creationDate: new Date(lastCheck),
+            CreatedBy: 1
+        }
+        patientsData.push(patient);
+
+        if (patient.gender == 1) {
+            genderString = "male"
+        }
+        else {
+            genderString = "female"
+        }
+        $("#patientsTable")
+            .append(`<tr>
+                <td>`+ patient.ID + `</td>
+                <td> `+ patient.fname + " " + patient.mname + " " + patient.lname + `</td>
+                <td>`+ patient.email + ` </td>
+                <td>`+ genderString + `</td>
+                <td>`+ patient.DOB + ` </td>
+                <td>`+ patient.Active + ` </td>
+                <td>`+ patient.creationDate + ` </td>
+                <td> <button type="button" onclick="myFunction(this)" data-id="` + patient.ID + `" class="btn btn-primary btn-sm navigation">Edit</button></td>
+                <tr>`)
+        $("#patients").css("display", "block")
+        $("#patientEdit").css("display", "none")
+
+
+    });
+
+
+    function getFormattedDate(date) {
+        var year = date.getFullYear();
+
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+
+        return month + '/' + day + '/' + year;
+    }
+
+</script>

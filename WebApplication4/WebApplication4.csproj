@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Card.html" />
     <Content Include="css\simple-sidebar.css" />
+    <Content Include="form.html" />
     <Content Include="Images\10clubs.png" />
     <Content Include="Images\10diamonds.png" />
     <Content Include="Images\10hearts.png" />
@@ -122,6 +123,7 @@
     <Content Include="Images\9spades.png" />
     <Content Include="Images\card.jpg" />
     <Content Include="index.html" />
+    <Content Include="main.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-datepicker.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-datetimepicker.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
