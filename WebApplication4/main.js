@@ -1,7 +1,8 @@
 ﻿
 $(document).ready(function () {
     debugger
-    renderTemplete("<tr data-id='{{ID}}><td>{{fname}} {{mname}} {{lname}} </td><td>{{age}}", { fname: 'anas', age: 20 });
+    // for test
+    //renderTemplete("<tr data-id='{{ID}}><td>{{fname}} {{mname}} {{lname}} </td><td>{{age}}", { fname: 'anas', age: 20 });
 
     hideAllDivs();
 

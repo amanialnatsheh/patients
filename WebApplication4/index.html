@@ -31,7 +31,7 @@
 
             <div class="list-group list-group-flush ">
                 <a href="#" data-related-div="patient-list" class="list-group-item list-group-item-action bg-light navigation">Patients</a>
-                <a href="#" data-related-div="user-list" class="list-group-item list-group-item-action bg-light">Users</a>
+                <a href="#" data-related-div="user-list" class="list-group-item list-group-item-action bg-light navigation">Users</a>
 
             </div>
         </div>
@@ -149,10 +149,75 @@
                     </form>
                 </div>
                 <div class="container screen user-list">
+                    <div class="row">
 
+                        <div class="col-md-6">
+                            <h1>Users</h1>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button type="button" data-related-div="user-edit" class="btn btn-primary btn-lg float-right navigation">Add</button>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <table class="table table-bordered" id="patientsTable">
+                        <tr>
+                            <th>ID</th>
+                            <th>FullName</th>
+                            <th>LoginName</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                            <th>Active</th>
+                            <th>CreatedBy</th>
+                            <th>CreationDate</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Amani juwdat alnatsheh</td>
+                            <td>amanialnatsheh</td>
+                            <td>amani12345</td>
+                            <td>admin</td>
+                            <td>true</td>
+                            <td>amani</td>
+                            <td>12-11-2019</td>
+                            <td><button type="button" data-related-div="user-edit" class="btn btn-primary btn-sm navigation">Edit</button></td>
+
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>manal juwdat alnatsheh</td>
+                            <td>manalnatsheh</td>
+                            <td>mana12345</td>
+                            <td>user</td>
+                            <td>true</td>
+                            <td>manal</td>
+                            <td>12-11-2019</td>
+                            <td><button type="button" data-related-div="user-edit" class="btn btn-primary btn-sm navigation">Edit</button></td>
+
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>samer khayali</td>
+                            <td>samerkhayalee1</td>
+                            <td>samer12345</td>
+                            <td>admin</td>
+                            <td>true</td>
+                            <td>samer</td>
+                            <td>12-11-2019</td>
+                            <td><button type="button" data-related-div="user-edit" class="btn btn-primary btn-sm navigation">Edit</button></td>
+
+                        </tr>
+                     
+
+                    </table>
                 </div>
                 <div class="container screen  user-edit">
-
+                    <h1>User Edit</h1>
                 </div>
             </div>
         </div>
